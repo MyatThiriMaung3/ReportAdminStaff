@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ReportAdminStaff.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Products</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Number
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImportPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetailPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@{
+    var i = 1;
+}
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImportPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-danger btn-gray" style="margin-right: 20px;">Update</a>
+                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-primary" style="margin-right: 20px;">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        i++;
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="User" asp-action="Index" class="btn btn-primary">Back to Login</a>
+</div>

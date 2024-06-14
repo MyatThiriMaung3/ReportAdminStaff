@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ReportAdminStaff.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Customer Manage</h2>
+<br />
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Register New Customer</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Number
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_number)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+@{
+    var i = 1;
+}
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone_number)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CustomerId" class="btn btn-primary" style="margin-right: 20px;">Update</a>
+                
+                <a asp-action="Delete" asp-route-id="@item.CustomerId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        i++;
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="User" asp-action="Index" class="btn btn-primary">Back to Login</a>
+</div>

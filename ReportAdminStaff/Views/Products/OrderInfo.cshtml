@@ -1,0 +1,78 @@
+﻿@model ReportAdminStaff.Models.Product
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1>Order Transaction</h1>
+<br />
+<br />
+
+<div>
+    <h3>@Model.ProductName</h3>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <br>
+        <dt class="col-sm-2">
+            Quantity
+        </dt>
+        <dd class="col-sm-10">
+            1
+        </dd>
+
+        <dt class="col-sm-2">
+            Price
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RetailPrice)
+        </dd>
+
+        <br />
+        <br />
+        <br />
+
+        <dt class="col-sm-2" style="font-size: 16px">
+            Total Price
+        </dt>
+        <dd class="col-sm-10" style="font-size: 16px">
+            @Html.DisplayFor(model => model.RetailPrice)
+        </dd>
+
+
+        <br />
+        <br />
+        <br />
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductBarcode)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Url.Content(Model.ProductBarcode)" alt="Product Barcode" class="img-fluid" style="width: 200px; height: auto;" />
+        </dd>
+    </dl>
+</div>
+
+
+<br />
+<br />
+<br />
+
+<div>
+    <button onclick="printPage()" class="btn btn-primary">Print</button>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function printPage() {
+            window.print();
+        }
+    </script>
+}

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ReportAdminStaff.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Manage Users (admin / sale-staff)</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Number
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@{
+    var i = 1;
+}
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                ****
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-primary" style="margin-right: 20px;">Update</a>
+                <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        i++;
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="User" asp-action="Index" class="btn btn-primary">Back to Login</a>
+</div>
